@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @project %>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <p><%= link_to "Edit this project", edit_project_path(@project), class: "btn btn-secondary" %>&ensp;
+  <%= link_to "Back to projects", projects_path, class: "btn btn-dark"  %>&ensp;
+  <%= button_to "Destroy this project", @project, method: :delete, class: "btn btn-secondary"  %><p>
+</div>
+

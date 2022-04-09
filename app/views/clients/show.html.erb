@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @client %>
+<br>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <p><%= link_to "Edit this client", edit_client_path(@client), class: "btn btn-secondary" %>&ensp;
+  <%= link_to "Back to clients", clients_path, class: "btn btn-dark"  %>&ensp;
+  <%= button_to "Destroy this client", @client, method: :delete, class: "btn btn-secondary"  %><p>
+</div>

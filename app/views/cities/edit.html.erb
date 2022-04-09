@@ -1,0 +1,10 @@
+<h1 class="display-5">Editing city</h1>
+
+<%= render "form", city: @city %>
+
+<br>
+
+<div class="btn-group" role="group" aria-label="Basic outlined example">
+  <%= link_to "Show this city", @city, class: "btn btn-secondary" %>&ensp;
+   <%= link_to "Back to cities", cities_path, class: "btn btn-dark"%>
+</div>

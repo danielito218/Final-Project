@@ -1,0 +1,10 @@
+<h1 class="display-5">Editing state</h1>
+
+<%= render "form", state: @state %>
+
+<br>
+
+<div class="btn-group" role="group" aria-label="Basic outlined example">
+  <%= link_to "Show this state", @state, class: "btn btn-secondary"  %>&ensp;
+  <%= link_to "Back to states", states_path, class: "btn btn-dark" %>
+</div>
