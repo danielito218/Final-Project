@@ -1,0 +1,177 @@
+Started GET "/" for 127.0.0.1 at 2022-04-10 18:25:03 +0200
+  [1m[35m (39.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (126.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (155.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 6 pending migrations:
+
+20220407192455_create_states.rb
+20220407192617_create_cities.rb
+20220407192729_create_clients.rb
+20220407192816_create_statuses.rb
+20220407192957_create_projects.rb
+20220407193124_create_project_statuses.rb
+
+
+):
+  
+activerecord (7.0.2.3) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.2.3) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.2.3) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.2.3) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.2.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.2.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.2.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.2.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (7.0.2.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.2.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.2.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.2.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.2.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+webpacker (5.4.3) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.2) lib/rack/proxy.rb:67:in `call'
+railties (7.0.2.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (6.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateStates (20220407192455)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "states" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220407192455"]]
+  [1m[36mTRANSACTION (119.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCities (20220407192617)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "cities" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "state_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_59b5e22e07"
+FOREIGN KEY ("state_id")
+  REFERENCES "states" ("id")
+)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_cities_on_state_id" ON "cities" ("state_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220407192617"]]
+  [1m[36mTRANSACTION (174.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateClients (20220407192729)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "clients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "rif" varchar, "email" varchar, "city_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_6b5e4c0738"
+FOREIGN KEY ("city_id")
+  REFERENCES "cities" ("id")
+)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_clients_on_city_id" ON "clients" ("city_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220407192729"]]
+  [1m[36mTRANSACTION (140.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateStatuses (20220407192816)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "statuses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "code" integer, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220407192816"]]
+  [1m[36mTRANSACTION (97.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProjects (20220407192957)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "projects" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "code" integer, "date" date, "amount" decimal, "description" text, "status_id" integer NOT NULL, "client_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_b4a83cd9b3"
+FOREIGN KEY ("status_id")
+  REFERENCES "statuses" ("id")
+, CONSTRAINT "fk_rails_8d9657cec3"
+FOREIGN KEY ("client_id")
+  REFERENCES "clients" ("id")
+)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_projects_on_status_id" ON "projects" ("status_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_projects_on_client_id" ON "projects" ("client_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220407192957"]]
+  [1m[36mTRANSACTION (483.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProjectStatuses (20220407193124)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "project_statuses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tansition_date" datetime(6), "status_id" integer NOT NULL, "project_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_b87eb0e304"
+FOREIGN KEY ("status_id")
+  REFERENCES "statuses" ("id")
+, CONSTRAINT "fk_rails_3cf2a2e96d"
+FOREIGN KEY ("project_id")
+  REFERENCES "projects" ("id")
+)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_project_statuses_on_status_id" ON "project_statuses" ("status_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_project_statuses_on_project_id" ON "project_statuses" ("project_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220407193124"]]
+  [1m[36mTRANSACTION (121.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-04-10 16:26:28.693199"], ["updated_at", "2022-04-10 16:26:28.693199"]]
+  [1m[36mTRANSACTION (195.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2022-04-10 18:26:36 +0200
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 11.1ms | Allocations: 145)
+  Rendered home/_header.html.erb (Duration: 14.7ms | Allocations: 181)
+  Rendered layout layouts/application.html.erb (Duration: 2254.9ms | Allocations: 91563)
+Completed 200 OK in 2337ms (Views: 2267.9ms | ActiveRecord: 0.0ms | Allocations: 95810)
+
+
+Started GET "/cities" for 127.0.0.1 at 2022-04-10 18:27:34 +0200
+Processing by CitiesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cities/index.html.erb within layouts/application
+  [1m[36mCity Load (1.6ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/cities/index.html.erb:14
+  Rendered cities/index.html.erb within layouts/application (Duration: 32.4ms | Allocations: 1342)
+  Rendered home/_header.html.erb (Duration: 0.6ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 63.5ms | Allocations: 3741)
+Completed 200 OK in 140ms (Views: 73.7ms | ActiveRecord: 1.6ms | Allocations: 7817)
+
+
+Started GET "/states" for 127.0.0.1 at 2022-04-10 18:28:45 +0200
+Processing by StatesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering states/index.html.erb within layouts/application
+  [1m[36mState Load (0.8ms)[0m  [1m[34mSELECT "states".* FROM "states"[0m
+  ↳ app/views/states/index.html.erb:6
+  Rendered states/index.html.erb within layouts/application (Duration: 18.0ms | Allocations: 1139)
+  Rendered home/_header.html.erb (Duration: 0.4ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 49.8ms | Allocations: 3531)
+Completed 200 OK in 109ms (Views: 59.6ms | ActiveRecord: 0.8ms | Allocations: 6539)
+
+
+Started GET "/clients" for 127.0.0.1 at 2022-04-10 18:29:01 +0200
+Processing by ClientsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.8ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:6
+  Rendered clients/index.html.erb within layouts/application (Duration: 25.8ms | Allocations: 1143)
+  Rendered home/_header.html.erb (Duration: 0.5ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 56.3ms | Allocations: 3535)
+Completed 200 OK in 105ms (Views: 67.2ms | ActiveRecord: 0.8ms | Allocations: 6777)
+
+

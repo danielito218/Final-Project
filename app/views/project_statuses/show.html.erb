@@ -2,9 +2,10 @@
 
 <%= render @project_status %>
 
-<div>
-  <%= link_to "Edit this project status", edit_project_status_path(@project_status) %> |
-  <%= link_to "Back to project statuses", project_statuses_path %>
-
-  <%= button_to "Destroy this project status", @project_status, method: :delete %>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <p><%= link_to "Edit this project status", edit_project_status_path(@project_status), class: "btn btn-secondary" %>&ensp; |
+  <%= link_to "Back to project statuses", project_statuses_path, class: "btn btn-dark"  %>&ensp;
+  <%= button_to "Destroy this project status", @project_status, method: :delete, class: "btn btn-secondary"  %><p>
 </div>
+
+
