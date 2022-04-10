@@ -27,8 +27,18 @@
   </div>
 
   <div>
-    <%= form.label :city_id, style: "display: block" %>
-    <%= form.text_field :city_id %>
+    <%= form.label :city_id, style: "display: block", class:"form-label"%>
+
+    <%
+      options = []
+      
+      City.all.sort{|x,y| x[:name] <=> y[:name]}.each do |city|
+        option = [city[:name],city[:id]]
+        options.push(option)    
+      end
+    %>
+
+    <%= form.select :city_id , options , class:"btn btn-secondary dropdown-toggle"%>
   </div>
   <br>
   <div>
