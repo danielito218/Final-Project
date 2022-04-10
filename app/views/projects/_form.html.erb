@@ -37,10 +37,21 @@
   </div>
 
   <div>
-    <%= form.label :client_id, style: "display: block" %>
-    <%= form.text_field :client_id %>
-  </div>
+    <%= form.label :client_id, style: "display: block", class:"form-label"%>
 
+    <%
+      options = []
+      
+      Client.all.sort{|x,y| x[:name] <=> y[:name]}.each do |client|
+        option = [client[:name],client[:id]]
+        options.push(option)    
+      end
+    %>
+
+    <%= form.select :client_id , options , class:"btn btn-secondary dropdown-toggle"%>
+    
+  </div>
+  <br>
   <div>
     <%= form.submit %>
   </div>
