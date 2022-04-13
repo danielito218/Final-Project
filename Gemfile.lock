@@ -128,13 +128,6 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-<<<<<<< HEAD
-    nokogiri (1.13.3-x64-mingw32)
-      racc (~> 1.4)
-    nokogiri (1.13.3-x86-linux)
-      racc (~> 1.4)
-=======
->>>>>>> 47ac211f3a847e454c1b164fdc7ea1372ce0c9b8
     nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
     public_suffix (4.0.6)
@@ -223,11 +216,8 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
-<<<<<<< HEAD
   x64-mingw32
   x86-linux
-=======
->>>>>>> 47ac211f3a847e454c1b164fdc7ea1372ce0c9b8
   x86_64-linux
 
 DEPENDENCIES
