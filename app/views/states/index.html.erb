@@ -14,7 +14,6 @@
   <% @states.each do |state| %>
     <tr>
         <td><%= state.name %></td>
-        <td><%= link_to "Show this state", state, class: "btn btn-secondary" %>
         <td><%= link_to "Edit this state", edit_state_path(state), class: "btn btn-secondary" %></td>
         <td><%= button_to "Destroy this state", state, method: :delete, data: {cofirm: 'Are you sure?'}, class: "btn btn-secondary" %></td>
       </tr>
@@ -22,4 +21,4 @@
   </tbody>
 </table>
 
-<%= link_to "New state", new_state_path, class: "btn btn-dark" %>
+
