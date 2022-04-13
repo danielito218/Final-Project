@@ -28,19 +28,29 @@
 
   <div>
     <%= form.label :city_id, style: "display: block", class:"form-label"%>
-
+    <%# create the array of citie's names and ID's for the select button %>
     <%
-      options = []
-      
+      # Define the outputs array
+      options = [] 
+      # For every city, ordered alphabetically
       City.all.sort{|x,y| x[:name] <=> y[:name]}.each do |city|
-        option = [city[:name],city[:id]]
-        options.push(option)    
+        # Create an array with the name at first position and the id second position
+        # The name will be promted to the user
+        # And the ID will go to the database
+        option = [city[:name],city[:id]] 
+        options.push(option) # push onto the output's array   
       end
     %>
-
+    <%# Pass the output array as parameter on the select button %>
     <%= form.select :city_id , options , class:"btn btn-secondary dropdown-toggle"%>
+    <br/><br/>
+    <%# if the city of the client didin't allow on the bata base, this link will go the create a new one %>
+    <strong>Didn't find your city? </strong>
+    <%=link_to "Create a new one", new_city_path%><br/>
+
+
   </div>
-  <br>
+  <br/>
   <div>
     <%= form.submit %>
   </div>
