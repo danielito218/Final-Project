@@ -15,7 +15,7 @@
     <tr>
         <td><%= status.name %></td>
         <td><%= link_to "Show this status", status, class: "btn btn-secondary" %>
-        <td><%= link_to "Edit this status", edit_status_path(@status), class: "btn btn-secondary" %></td>
+        <td><%= link_to "Edit this status", edit_status_path(status), class: "btn btn-secondary" %></td>
         <td><%= button_to "Destroy this status", @status, method: :delete, data: {cofirm: 'Are you sure?'}, class: "btn btn-secondary" %></td>
       </tr>
     <% end %>

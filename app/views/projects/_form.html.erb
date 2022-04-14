@@ -13,7 +13,7 @@
 
   <div>
     <%= form.label :code, style: "display: block" %>
-    <%= form.number_field :code %>
+    <%= form.number_field :code %> 
   </div>
 
   <div>
@@ -33,9 +33,9 @@
 
   <div>
     <%= form.label :status_id, style: "display: block" %>
-    <%= form.text_field :status_id %>
+    <%= form.select :status_id, [["Proposal generated", Status.find_by(name:"Proposal generated").id]], class:"btn btn-secondary dropdown toggle"%>
   </div>
-
+  <br/>
   <div>
     <%= form.label :client_id, style: "display: block", class:"form-label"%>
 
