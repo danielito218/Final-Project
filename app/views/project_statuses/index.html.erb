@@ -12,9 +12,8 @@
     <tbody>
   <% @project_statuses.each do |project_status| %>
     <tr>
-        <td><%= project.code %></td>
+        <td><%= project_status.project.code %></td>
         <td><%= link_to "Show this project status", project_status, class: "btn btn-secondary" %>
-        <td><%= link_to "Edit this project", edit_project_status_path(@project_status), class: "btn btn-secondary" %></td>
         <td><%= button_to "Destroy this project status", @project_status, method: :delete, data: {cofirm: 'Are you sure?'}, class: "btn btn-secondary" %></td>
       </tr>
     <% end %>

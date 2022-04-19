@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
-
+ 
   # GET /projects or /projects.json
   def index
     @projects = Project.all
@@ -25,8 +25,12 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
+
+        puts ("\n\n\n\n\n\n\n\ CREANDO EL NUEVO ESTATUS DE PROYECTO\n\n\n\n\n\n\n")
+        new_project_status = ProjectStatus.new({tansition_date: Date.today, status_id: @project.status_id, project_id: @project.id} )
+        new_project_status.save
         format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
-        format.json { render :show, status: :created, location: @project }
+        format.json { render :show, status: :created, location: @project }      
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -38,14 +42,21 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
+        
         format.html { redirect_to project_url(@project), notice: "Project was successfully updated." }
         format.json { render :show, status: :ok, location: @project }
+
+        
+        
+
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end
+
+
 
   # DELETE /projects/1 or /projects/1.json
   def destroy
