@@ -5,7 +5,10 @@
 <table class="table table-striped table-hover table table-bordered" style="background-color: #e3f2fd;">
   <thead class="table" style="background-color: #3AAFA9;">
     <tr>
-      <th>Code of the project</th>
+      <th>Client</th>
+      <th>Code</th>
+      <th>Date</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +16,10 @@
 <tbody>
   <% @projects.each do |project| %>
     <tr>
+        <td><%= project.client.name %></td>
         <td><%= project.code %></td>
+        <td><%= project.date%>
+        <td><%= project.status.name %></td>
         <td><%= link_to "Show this project", project, class: "btn btn-secondary" %>
         <td><%= link_to "Edit this project", edit_project_path(project), class: "btn btn-secondary" %></td>
         <td><%= button_to "Destroy this project", project, method: :delete, data: {cofirm: 'Are you sure?'}, class: "btn btn-secondary" %></td>
