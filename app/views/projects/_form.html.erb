@@ -18,8 +18,8 @@
 
   <div>
     <%= form.label :date, style: "display: block" %>
-    <input type="date" value=<%=Date.today%>>
-    <%# form.date_field :date %>
+    <%# <input type="date" value= selected> %>
+    <%= form.date_field :date, :value=> Date.today%>
   </div>
 
   <div>
