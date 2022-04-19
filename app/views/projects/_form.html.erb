@@ -11,6 +11,22 @@
     </div>
   <% end %>
 
+   <div>
+    <%= form.label :client_id, style: "display: block", class:"form-label"%>
+
+    <%
+      options = []
+      
+      Client.all.sort{|x,y| x[:name] <=> y[:name]}.each do |client|
+        option = [client[:name],client[:id]]
+        options.push(option)    
+      end
+    %>
+
+    <%= form.select :client_id , options , class:"btn btn-secondary dropdown-toggle"%>
+    
+  </div>
+
   <div>
     <%= form.label :code, style: "display: block" %>
     <%= form.number_field :code %> 
@@ -34,24 +50,25 @@
 
   <div>
     <%= form.label :status_id, style: "display: block" %>
-    <%= form.select :status_id, [["Proposal generated", Status.find_by(name:"Proposal generated").id]], class:"btn btn-secondary dropdown toggle"%>
+
+    <%# CREATE STATUS MACHINE WHIT THE CODES OF THE STATUS %>
+    <% if project.status.nil? %> 
+    <%# IF IS A NEW PROJECT ONLY SHOW THE FIRST STATUS %>
+      <%= form.select :status_id, [["Proposal generated", Status.find_by(name:"Proposal generated").id]], class:"btn btn-secondary dropdown toggle"%>
+    
+    <% elsif project.status.code == 1 %>
+    <%# IF THE PROJECT IS IN THE FIRST STATUS SELEC IF IT'S APPROVED OR REJECTED %>
+        <%= form.select :status_id, [["Approved proposal", Status.find_by(code:2).id],["Rejected Project", Status.find_by(code:9).id]], class:"btn btn-secondary dropdown toggle"%>
+    <% elsif project.status.code == 8 or project.status.code == 9 or project.status.code == 10 %>
+    <%# IF THE PROJECT STATUS IS IN THE OPTIONS THAT CAN ONLY BE ENDED SHOW THAT OPTION %>
+        <%= form.select :status_id, [["Ended project", Status.find_by(code: 10).id]], class:"btn btn-secondary dropdown toggle"%>
+    <% else %>
+    <%# IF THE PROJECT STATUS IS IN ANY OTHER OPTION SHOW THE NEXT STATUS%>
+      <%= form.select :status_id, [[Status.find_by(code: (project.status.code + 1)).name, Status.find_by(code: (project.status.code + 1)).id]], class:"btn btn-secondary dropdown toggle"%>
+    <% end %>
   </div>
   <br/>
-  <div>
-    <%= form.label :client_id, style: "display: block", class:"form-label"%>
-
-    <%
-      options = []
-      
-      Client.all.sort{|x,y| x[:name] <=> y[:name]}.each do |client|
-        option = [client[:name],client[:id]]
-        options.push(option)    
-      end
-    %>
-
-    <%= form.select :client_id , options , class:"btn btn-secondary dropdown-toggle"%>
-    
-  </div>
+ 
   <br>
   <div>
     <%= form.submit %>
