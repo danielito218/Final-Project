@@ -6,6 +6,7 @@
   <thead class="table" style="background-color: #3AAFA9;">
     <tr>
       <th>Name of the status</th>
+      <th>Code</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
   <% @statuses.each do |status| %>
     <tr>
         <td><%= status.name %></td>
+        <td><%= status.code %></td>
         <td><%= link_to "Show this status", status, class: "btn btn-secondary" %>
         <td><%= link_to "Edit this status", edit_status_path(status), class: "btn btn-secondary" %></td>
         <td><%= button_to "Destroy this status", @status, method: :delete, data: {cofirm: 'Are you sure?'}, class: "btn btn-secondary" %></td>

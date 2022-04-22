@@ -53,15 +53,15 @@
 
     <%# CREATE STATUS MACHINE WHIT THE CODES OF THE STATUS %>
     <% if project.status.nil? %> 
-    <%# IF IS A NEW PROJECT ONLY SHOW THE FIRST STATUS %>
-      <%= form.select :status_id, [["Proposal generated", Status.find_by(name:"Proposal generated").id]], class:"btn btn-secondary dropdown toggle"%>
+    <%# IF IT'S A NEW PROJECT ONLY SHOW THE FIRST STATUS %>
+      <%= form.select :status_id, [["Generated proposal", Status.find_by(name:"Generated proposal").id]], class:"btn btn-secondary dropdown toggle"%>
     
     <% elsif project.status.code == 1 %>
     <%# IF THE PROJECT IS IN THE FIRST STATUS SELEC IF IT'S APPROVED OR REJECTED %>
-        <%= form.select :status_id, [["Approved proposal", Status.find_by(code:2).id],["Rejected Project", Status.find_by(code:9).id]], class:"btn btn-secondary dropdown toggle"%>
+        <%= form.select :status_id, [["Proposal approved", Status.find_by(code:2).id],["Rejected project", Status.find_by(code:9).id]], class:"btn btn-secondary dropdown toggle"%>
     <% elsif project.status.code == 8 or project.status.code == 9 or project.status.code == 10 %>
     <%# IF THE PROJECT STATUS IS IN THE OPTIONS THAT CAN ONLY BE ENDED SHOW THAT OPTION %>
-        <%= form.select :status_id, [["Ended project", Status.find_by(code: 10).id]], class:"btn btn-secondary dropdown toggle"%>
+        <%= form.select :status_id, [["Finished project", Status.find_by(code: 10).id]], class:"btn btn-secondary dropdown toggle"%>
     <% else %>
     <%# IF THE PROJECT STATUS IS IN ANY OTHER OPTION SHOW THE NEXT STATUS%>
       <%= form.select :status_id, [[Status.find_by(code: (project.status.code + 1)).name, Status.find_by(code: (project.status.code + 1)).id]], class:"btn btn-secondary dropdown toggle"%>

@@ -27,9 +27,9 @@ class ProjectsController < ApplicationController
       if @project.save
 
         # Create the new project status
-        new_project_status = ProjectStatus.new({tansition_date: Date.today, status_id: @project.status_id, project_id: @project.id} )
+        @new_project_status = ProjectStatus.new({tansition_date: Date.today, status_id: @project.status_id, project_id: @project.id} )
         # Add the new project status on the database
-        new_project_status.save
+        @new_project_status.save
         format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
         format.json { render :show, status: :created, location: @project }      
       else
