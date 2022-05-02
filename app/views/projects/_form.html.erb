@@ -54,7 +54,7 @@
     <%# CREATE STATUS MACHINE WHIT THE CODES OF THE STATUS %>
     <% if project.status.nil? %> 
     <%# IF IT'S A NEW PROJECT ONLY SHOW THE FIRST STATUS %>
-      <%= form.select :status_id, [["Generated proposal", Status.find_by(name:"Generated proposal").id]], class:"btn btn-secondary dropdown toggle"%>
+      <%= form.select :status_id, [["Proposal generated", Status.find_by(name:"Proposal generated").id]], class:"btn btn-secondary dropdown toggle"%>
     
     <% elsif project.status.code == 1 %>
     <%# IF THE PROJECT IS IN THE FIRST STATUS SELEC IF IT'S APPROVED OR REJECTED %>
