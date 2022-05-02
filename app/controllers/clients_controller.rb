@@ -57,6 +57,8 @@ class ClientsController < ApplicationController
     end
   end
 
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client
@@ -67,4 +69,6 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client).permit(:name, :rif, :email, :city_id)
     end
+
+  
 end
