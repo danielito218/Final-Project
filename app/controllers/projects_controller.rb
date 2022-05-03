@@ -43,11 +43,14 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        
-        # Create the new project status
-        @new_project_status = ProjectStatus.new({tansition_date: DateTime.now, status_id: @project.status_id, project_id: @project.id} )
-        # Add the new project status on the database
-        @new_project_status.save
+        # Only create a new Project Status if is updated 
+        # Checking if already exist a Project Status for this Project whit the same Status
+        unless ProjectStatus.where(status_id: @project.status_id, project_id: @project.id).exists?
+          # Create the new project status
+          @new_project_status = ProjectStatus.new({tansition_date: DateTime.now, status_id: @project.status_id, project_id: @project.id} )
+          # Add the new project status on the database
+          @new_project_status.save
+        end
       
         format.html { redirect_to project_url(@project), notice: "Project was successfully updated." }
         format.json { render :show, status: :ok, location: @project }
