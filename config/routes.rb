@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :cities
   resources :states
   root 'home#index'
+  get '/clients/:id/clientprojects', to: 'clients#client_projects', as: "clientprojects"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
