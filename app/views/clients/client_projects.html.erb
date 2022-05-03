@@ -15,6 +15,7 @@
       <th>Date</th>
       <th>Amount</th>
       <th>Description</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -25,6 +26,7 @@
         <td><%= project.date %></td>
         <td><%= project.amount %></td>
         <td><%= project.description %></td>
+        <td><%= link_to "", project, class: "btn btn-outline-dark bi bi-search" %></td>
       </tr>
     <% end %>
   </tbody>
