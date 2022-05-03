@@ -48,15 +48,34 @@
     <%= form.text_area :description %>
   </div>
 
-  <div>
-    <%= form.label :status_id, style: "display: block" %>
-
-    <%# CREATE STATUS MACHINE WHIT THE CODES OF THE STATUS %>
-    <% if project.status.nil? %> 
+  <%# For a new project asig %>
+  <% if project.status.nil? %>      
+    <%= form.label :status_id, style: "display: block" %>  
     <%# IF IT'S A NEW PROJECT ONLY SHOW THE FIRST STATUS %>
       <% form.select :status_id, [["Proposal generated", Status.find_by(name:"Proposal generated").id]], class:"btn btn-secondary dropdown toggle"%>
-    <%else%>
-  </div>
+  <%else%>
+    <%# list of options %>
+     <%list = []%>
+
+    <% if project.status.code == 1 %>
+            <%# IF THE PROJECT IS IN THE FIRST STATUS SELEC IF IT'S APPROVED OR REJECTED %>
+               <% list.push(["Proposal generated", Status.find_by(name:"Proposal generated").id])
+                  list.push(["Proposal approved", Status.find_by(name:"Proposal approved").id])
+                  list.push(["Rejected project", Status.find_by(name:"Rejected project").id])
+               %>
+
+    <% elsif project.status.code == 8 or project.status.code == 9 or project.status.code == 10 %>
+      <%# IF THE PROJECT STATUS IS IN THE OPTIONS THAT CAN ONLY BE ENDED SHOW THAT OPTION %>
+      <%list.push(["Finished project", Status.find_by(code: 10).id])%>
+    <% else %>
+      <%# IF THE PROJECT STATUS IS IN ANY OTHER OPTION SHOW THE NEXT STATUS%>
+      <% list.push([Status.find_by(code: (project.status.code)).name, Status.find_by(code: (project.status.code)).id])
+         list.push([Status.find_by(code: (project.status.code + 1)).name, Status.find_by(code: (project.status.code + 1)).id])
+      %>
+
+    <%end%>
+        <%= form.select :status_id, list, class:"btn btn-secondary dropdown toggle", id:"change_status"%>
+  <%end%>
   <br/>
  
   <br>
