@@ -55,16 +55,49 @@
     <% if project.status.nil? %> 
     <%# IF IT'S A NEW PROJECT ONLY SHOW THE FIRST STATUS %>
       <%= form.select :status_id, [["Proposal generated", Status.find_by(name:"Proposal generated").id]], class:"btn btn-secondary dropdown toggle"%>
-    
-    <% elsif project.status.code == 1 %>
-    <%# IF THE PROJECT IS IN THE FIRST STATUS SELEC IF IT'S APPROVED OR REJECTED %>
-        <%= form.select :status_id, [["Proposal approved", Status.find_by(code:2).id],["Rejected project", Status.find_by(code:9).id]], class:"btn btn-secondary dropdown toggle"%>
-    <% elsif project.status.code == 8 or project.status.code == 9 or project.status.code == 10 %>
-    <%# IF THE PROJECT STATUS IS IN THE OPTIONS THAT CAN ONLY BE ENDED SHOW THAT OPTION %>
-        <%= form.select :status_id, [["Finished project", Status.find_by(code: 10).id]], class:"btn btn-secondary dropdown toggle"%>
-    <% else %>
-    <%# IF THE PROJECT STATUS IS IN ANY OTHER OPTION SHOW THE NEXT STATUS%>
-      <%= form.select :status_id, [[Status.find_by(code: (project.status.code + 1)).name, Status.find_by(code: (project.status.code + 1)).id]], class:"btn btn-secondary dropdown toggle"%>
+    <%else%>
+      <% change_status_option = nil%>
+      <script>
+
+        function update_status()
+        {
+          var option = document.getElementById("checkbox_status").checked;
+          var select = document.getElementById("change_status");
+
+          if (option)
+          {
+            select.style.display = "block";
+            <% change_status_option = true%>
+            alert("Holaaa");
+          }
+          else
+          {
+            <% change_status_option = false%>
+            select.style.display = "none";
+          }
+
+        }
+
+      
+      </script>
+
+
+      <form>
+        <input type="checkbox" id="checkbox_status" onclick="update_status()"> Do you want to update the Status of this Project?
+      </form>
+        <%if change_status_option%>
+
+          <% if project.status.code == 1 %>
+          <%# IF THE PROJECT IS IN THE FIRST STATUS SELEC IF IT'S APPROVED OR REJECTED %>
+              <%= form.select :status_id, [["Proposal approved", Status.find_by(code:2).id],["Rejected project", Status.find_by(code:9).id]], class:"btn btn-secondary dropdown toggle", id:"change_status"%>
+          <% elsif project.status.code == 8 or project.status.code == 9 or project.status.code == 10 %>
+          <%# IF THE PROJECT STATUS IS IN THE OPTIONS THAT CAN ONLY BE ENDED SHOW THAT OPTION %>
+              <%= form.select :status_id, [["Finished project", Status.find_by(code: 10).id]], class:"btn btn-secondary dropdown toggle", id:"change_status"%>
+          <% else %>
+          <%# IF THE PROJECT STATUS IS IN ANY OTHER OPTION SHOW THE NEXT STATUS%>
+            <%= form.select :status_id, [[Status.find_by(code: (project.status.code + 1)).name, Status.find_by(code: (project.status.code + 1)).id]], class:"btn btn-secondary dropdown toggle", id:"change_status"%>
+          <%end%>
+        <%end%>
     <% end %>
   </div>
   <br/>
