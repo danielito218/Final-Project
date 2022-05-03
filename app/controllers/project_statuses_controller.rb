@@ -57,6 +57,7 @@ class ProjectStatusesController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project_status
@@ -67,4 +68,6 @@ class ProjectStatusesController < ApplicationController
     def project_status_params
       params.require(:project_status).permit(:tansition_date, :status_id, :project_id)
     end
+
+
 end
