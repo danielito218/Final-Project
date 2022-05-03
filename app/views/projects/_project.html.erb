@@ -1,7 +1,12 @@
-<div id="<%= dom_id project %>">
+<div id="<%= dom_id project %>" style="width:50%">
 <br/>
 <ul class="list-group">
   <li class="list-group-item active" aria-current="true" style="background-color: #3AAFA9;"><p>
+    <strong>Client:</strong>
+    <%= project.client.name %>
+  </p></li>
+  </li>
+    <li class="list-group-item" style="background-color: #DEF2F1;"><p>
     <strong>Code:</strong>
     <%= project.code %>
   </p></li>
@@ -20,11 +25,7 @@
     <li class="list-group-item" style="background-color: #DEF2F1;"><p>
     <strong>Status:</strong>
     <%= project.status.name %>
-  </p></li>
-    <li class="list-group-item" style="background-color: #DEF2F1;"><p>
-    <strong>Client:</strong>
-    <%= project.client.name %>
-  </p></li>
+  </p>
 </ul>
 
 <br/>
