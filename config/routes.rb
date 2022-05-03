@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/create'
   resources :project_statuses
   resources :projects
   resources :statuses
