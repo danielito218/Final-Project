@@ -52,16 +52,16 @@
   <% if project.status.nil? %>      
     <%= form.label :status_id, style: "display: block" %>  
     <%# IF IT'S A NEW PROJECT ONLY SHOW THE FIRST STATUS %>
-      <%= form.select :status_id, [["Generated proposal", Status.find_by(name:"Generated proposal").id]], class:"btn btn-secondary dropdown toggle"%>
+      <%= form.select :status_id, [["Generated proposal", Status.find_by(code:1).id]], class:"btn btn-secondary dropdown toggle"%>
   <%else%>
     <%# list of options %>
      <%list = []%>
 
     <% if project.status.code == 1 %>
             <%# IF THE PROJECT IS IN THE FIRST STATUS SELEC IF IT'S APPROVED OR REJECTED %>
-               <% list.push(["Generated proposal", Status.find_by(name:"Generated proposal").id])
-                  list.push(["Approved proposal", Status.find_by(name:"Approved proposal").id])
-                  list.push(["Rejected project", Status.find_by(name:"Rejected project").id])
+               <% list.push(["Generated proposal", Status.find_by(code:1).id])
+                  list.push(["Approved proposal", Status.find_by(code:2).id])
+                  list.push(["Rejected project", Status.find_by(code:9).id])
                %>
 
     <% elsif project.status.code == 8 or project.status.code == 9 or project.status.code == 10 %>
