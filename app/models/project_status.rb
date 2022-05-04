@@ -6,9 +6,10 @@ class ProjectStatus < ApplicationRecord
 	def self.projects_time(id)
   		
 		projects_list = ProjectStatus.where(project_id: id)
-		@first_date = projects_list.first.tansition_date
-		@second_date = projects_list.last.tansition_date
-		@final_date =  (@second_date.to_date- @first_date.to_date)
+		first_date = projects_list.first.tansition_date
+		second_date = projects_list.last.tansition_date
+		final_date =  (second_date- first_date)
+
 
 	end
 

@@ -1,7 +1,12 @@
 <p style="color: green"><%= notice %></p>
-<h1>Project duration time</h1>
+<h1>Project's duration time</h1>
 <br>
 <%id = params[:id]%>
+<%time = ProjectStatus.projects_time(id).to_i%>
+<% m = time/60 %>
+<% h = m/60 %>
+<% d = h/24 %>
+<% mo = d/30 %>
 
 <table class="table table-striped table-hover table table-bordered" style="background-color: #e3f2fd;">
   <thead class="table" style="background-color: #3AAFA9;">
@@ -9,14 +14,13 @@
       <th>Initial date</th>
       <th>Current date</th>
       <th>Total time spent</th>
-      <th colspan="1"></th>
     </tr>
 
     <tbody>
     <tr>
         <td><%= (ProjectStatus.where(project_id:id).first.tansition_date).to_date %></td>
         <td><%= (ProjectStatus.where(project_id:id).last.tansition_date).to_date %></td>
-        <td><%= ProjectStatus.projects_time(id)%>
+        <td><%=  "#{mo%12} months, #{d%30} days, #{h%24} hours and #{m%60} minutes" %>
     </tr>
   </tbody>
 </table>
