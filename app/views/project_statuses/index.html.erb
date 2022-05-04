@@ -19,9 +19,8 @@
         <td><%= project_status.project.code %></td>
         <td><%= project_status.status.name %></td>
         <td><%= link_to "", project_status, class: "btn btn-outline-dark bi bi-search" %></td>
-        <td>
+        <%# <td>
         <%= link_to "", edit_project_status_path(project_status), class: "btn btn-outline-dark bi bi-pencil-square" %>
-        </td>
       </tr>
     <% end %>
   </tbody>

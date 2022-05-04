@@ -14,10 +14,14 @@ class SearchController < ApplicationController
 
     @results = []
 
-    ProjectStatus.all.each do |project_status|
+    ProjectStatus.all.sort_by{|p| p.tansition_date}.each do |project_status|
       transiton_date = project_status.tansition_date.to_date
-      if initial_date <= transiton_date and transiton_date <= final_date
-          @results.push(project_status)       
+      checker = []
+      if not checker.include?(project_status.project.id)
+        if initial_date <= transiton_date and transiton_date <= final_date
+            @results.push(project_status)      
+            checker.push(project_status.project.id) 
+        end
       end
     end
 
