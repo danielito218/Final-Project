@@ -3,7 +3,7 @@
 <%= render @project %>
 
 <div class="btn-group" role="group" aria-label="Basic example">
-  <%= link_to "", projects_path, class: "btn btn-outline-dark bi bi-box-arrow-left"  %>&ensp;
+  <%= link_to "", :back, class: "btn btn-outline-dark bi bi-box-arrow-left"  %>&ensp;
   <%= link_to "", edit_project_path(@project), class: "btn btn-outline-dark bi bi-pencil-square" %>&ensp;
   <%= button_to "", @project, method: :delete, class: "btn btn-outline-dark bi bi-trash3-fill"  %>&ensp;
   <%= link_to "Project duration time", projectstime_path(@project), class: "btn btn-secondary bi bi-person-lines-fill" %>

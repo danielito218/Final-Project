@@ -3,7 +3,7 @@
 <%= render @client %>
 <br>
 <div class="btn-group" role="group" aria-label="Basic example">
-   <%= link_to "", clients_path, class: "btn btn-outline-dark bi bi-box-arrow-left"  %>&ensp;
+   <%= link_to "", :back, class: "btn btn-outline-dark bi bi-box-arrow-left"  %>&ensp;
   <%= link_to "", edit_client_path(@client), class: "btn btn-outline-dark bi bi-pencil-square" %>&ensp;
   <%= button_to "", @client, method: :delete, class: "btn btn-outline-dark bi bi-trash3-fill"  %>&ensp;
   <%= link_to "Client projects", clientprojects_path(@client), class: "btn btn-secondary bi bi-person-lines-fill" %>

@@ -3,7 +3,7 @@
 <%= render @project_status %>
 
 <div class="btn-group" role="group" aria-label="Basic example">
-  <%= link_to "", project_statuses_path, class: "btn btn-outline-dark bi bi-box-arrow-left"  %>&ensp;
+  <%= link_to "", :back, class: "btn btn-outline-dark bi bi-box-arrow-left"  %>&ensp;
   <%= link_to "", edit_project_status_path(@project_status), class: "btn btn-outline-dark bi bi-pencil-square" %>&ensp; |
   <%= button_to "", @project_status, method: :delete, class: "btn btn-outline-dark bi bi-trash3-fill"  %>
 </div>

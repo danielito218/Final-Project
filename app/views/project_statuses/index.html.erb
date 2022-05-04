@@ -8,14 +8,16 @@
     <tr>
       <th>Client</th>
       <th>Project</th>
+      <th>Status</th>
       <th colspan="1"></th>
     </tr>
 
     <tbody>
-  <% @project_statuses.each do |project_status| %>
+  <% @project_statuses.sort_by{|p| p.project_id}.each do |project_status| %>
     <tr>
         <td><%= project_status.project.client.name %></td>
         <td><%= project_status.project.code %></td>
+        <td><%= project_status.status.name %></td>
         <td><%= link_to "", project_status, class: "btn btn-outline-dark bi bi-search" %>
       </tr>
     <% end %>
