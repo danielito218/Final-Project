@@ -1,7 +1,5 @@
-<p style="color: green"><%= notice %></p>
-
 <div>
-    <h1 class="display-5"> Select timelapse to consult </h1>
+    <h1 class="display-5"> Find projects by timelapse </h1>
     <br/>
     <%= form_tag("/search/create", method: 'get', remote: true, id: 'search-form') do%>
         <div>
@@ -12,4 +10,8 @@
             <%= submit_tag("Search")%>
         </div>
     <%end%>
+
+    <div id="results">
+
+    </div>
 </div>
